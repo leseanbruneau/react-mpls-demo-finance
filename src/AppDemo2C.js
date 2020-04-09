@@ -17,16 +17,19 @@ class AppDemo2C extends Component {
   async componentDidMount() {
 
     // Using Firebase Realtime database
-    // couple notes
-    // 1.  Create File ${PRJ_ROOT_DIR}/.env.local
+    // couple notes to run off localhost
+    // 1.  Create File ${PRJ_ROOT_DIR}/.env.local  
     // 2.  Add the following line to ${PRJ_ROOT_DIR}/.env.local
-    //     REACT_APP_FIREBASE_URL='REST_API_ENDPOINT_URL'
+    //     REACT_APP_FIREBASE_CONFIG.databaseURL='REST_API_ENDPOINT_URL'
     //
     //     Where REST_API_ENDPOINT_URL is the URL location of JSON object
+    //
+    // If React application and database are hosted in same Firebase project, 
+    //   then REACT_APP_FIREBASE_CONFIG.databaseURL is a system env variable
 
-    // const firebaseDBUrl = process.env.REACT_APP_FIREBASE_URL + '/market-ind.json';
+    // const firebaseDBUrl = process.env.REACT_APP_FIREBASE_CONFIG.databaseURL + '/market-ind.json';
     // console.log(`process.env`, process.env);
-    // console.log('REACT_APP_FIREBASE_URL: ', process.env.REACT_APP_FIREBASE_URL);
+    // console.log('REACT_APP_FIREBASE_CONFIG.databaseURL: ', process.env.REACT_APP_FIREBASE_CONFIG.databaseURL);
     // console.log('firebaseDBUrl is: ' + firebaseDBUrl);
 
     // Using npm package json-server for REST API endpoint
