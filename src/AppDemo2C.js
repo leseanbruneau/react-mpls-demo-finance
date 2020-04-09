@@ -15,11 +15,27 @@ class AppDemo2C extends Component {
   }
 
   async componentDidMount() {
-    const jsonLocalhostUrl = 'http://localhost:3001/market-ind'
-    //const firebaseDBUrl = null
+
+    // Using Firebase Realtime database
+    // couple notes
+    // 1.  Create File ${PRJ_ROOT_DIR}/.env.local
+    // 2.  Add the following line to ${PRJ_ROOT_DIR}/.env.local
+    //     REACT_APP_FIREBASE_URL='REST_API_ENDPOINT_URL'
+    //
+    //     Where REST_API_ENDPOINT_URL is the URL location of JSON object
+
+    // const firebaseDBUrl = process.env.REACT_APP_FIREBASE_URL + '/market-ind.json';
+    // console.log(`process.env`, process.env);
+    // console.log('REACT_APP_FIREBASE_URL: ', process.env.REACT_APP_FIREBASE_URL);
+    // console.log('firebaseDBUrl is: ' + firebaseDBUrl);
+
+    // Using npm package json-server for REST API endpoint
+    const jsonLocalhostUrl = 'http://localhost:3001/market-ind';
+    
 
     this.setState({ loadingremote: true });
 
+    //await axios.get(firebaseDBUrl)
     await axios.get(jsonLocalhostUrl)
       .then(response => {
         this.setState({ allquotes: response.data});
