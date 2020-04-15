@@ -26,9 +26,6 @@ class DropdownListC extends Component {
      
     let symboloptions = {};
 
-    //let indexOptions = {};
-
-
     symboloptions = (
       <React.Fragment>
         {this.state.symbols.map(symbol => (

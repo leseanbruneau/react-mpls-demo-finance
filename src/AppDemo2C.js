@@ -16,7 +16,13 @@ class AppDemo2C extends Component {
 
   async componentDidMount() {
 
-    // Using Firebase Realtime database
+    this.setState({ loadingremote: true });
+
+    // Using npm package json-server for REST API endpoint
+    const jsonLocalhostUrl = 'http://localhost:3001/market-ind';
+
+
+    // NOTES - Using Firebase Realtime database
     // couple notes to run off localhost
     // 1.  Create File ${PRJ_ROOT_DIR}/.env.local  
     // 2.  Add the following line to ${PRJ_ROOT_DIR}/.env.local
@@ -27,19 +33,27 @@ class AppDemo2C extends Component {
     // If React application and database are hosted in same Firebase project, 
     //   then REACT_APP_FIREBASE_CONFIG.databaseURL is a system env variable
 
-    // const firebaseDBUrl = process.env.REACT_APP_FIREBASE_CONFIG.databaseURL + '/market-ind.json';
-    // console.log(`process.env`, process.env);
-    // console.log('REACT_APP_FIREBASE_CONFIG.databaseURL: ', process.env.REACT_APP_FIREBASE_CONFIG.databaseURL);
-    // console.log('firebaseDBUrl is: ' + firebaseDBUrl);
+    //////////////////////////////////////////////////////////////////////////////
+    //
+    //  Uncomment the following line to set firebaseDBURL variable
+    //
+    //////////////////////////////////////////////////////////////////////////////
+    //const firebaseDBUrl = process.env.REACT_APP_FIREBASE_CONFIG.databaseURL + '/market-ind.json';
 
-    // Using npm package json-server for REST API endpoint
-    const jsonLocalhostUrl = 'http://localhost:3001/market-ind';
+
+    /////////////////////////////////////////////////////////////////////////////
+    //
+    //  axios.get - toggle next two lines depending on location of REST API URL
+    //
+    //   await axios.get(firebaseDBUrl) - Firebase database using REACT_APP_FIREBASE env var
+    //
+    //   await axios.get(jsonLocalhostUrl) - Using npm json-server localhost server
+    //
+    ////////////////////////////////////////////////////////////////////////////
     
-
-    this.setState({ loadingremote: true });
-
     //await axios.get(firebaseDBUrl)
     await axios.get(jsonLocalhostUrl)
+
       .then(response => {
         this.setState({ allquotes: response.data});
       })
