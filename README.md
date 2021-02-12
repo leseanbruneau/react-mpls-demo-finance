@@ -6,6 +6,16 @@ Obtain json file from the following Github project
 
 https://github.com/leseanbruneau/nodejs-batch-yfin-csv-to-json.git
 
+### ${PRJ_ROOT_DIR}/.env.local File
+You need to create a .env.local file to define endpoint for JSON data.  
+.env.local only needs to be one line
+
+REACT_APP_FIREBASE_CONFIG.databaseURL='%%ENDPOINT_URL%%'
+
+example:
+REACT_APP_FIREBASE_CONFIG.databaseURL='http://localhost:3000'
+
+
 
 ### ${PRJ_ROOT_DIR}/src/index.js
 File contains commented code for the different parts of the demo application
